@@ -1,0 +1,314 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--backColorBody);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+:root{
+    --backColorBody: #d9dce9;
+    --greyColor: #eaeaea;
+    --whiteColor: #fff;
+    --lightGreyColor: #f6f5f5;
+    --boxShadowColor: rgba(0, 0, 0, 0.2);
+    --progressBarColor: rgb(48, 48, 49);
+
+}
+
+/* darkmode 
+    --backColorBody: #212429;
+    --greyColor: #c7a48e;
+    --whiteColor: #1e2126;
+    --lightGreyColor: #f6f5f5;
+    --boxShadowColor: rgba(0, 0, 0, 0.2);
+    --progressBarColor: rgb(48, 48, 49);
+*/
+
+.switch{
+    width: 60px;
+    height: 30px;
+    border-radius: 50px;
+    border: 1px solid var(--greyColor);
+    background-color: var(--greyColor);
+    position: absolute;
+    top: 20px;
+    left: 20%;
+    box-shadow: var(--boxShadowColor) 0px 5px 15px;
+}
+
+.switch::before{
+    content: '';
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    border-radius: 50px;
+    background-color: var(--whiteColor);
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.container{
+    position: relative;
+    width: 300px;
+    padding: 20px 15px;
+    background-color: var(--whiteColor);
+    border-radius: 8px;
+    box-shadow: var(--boxShadowColor) 0px 5px 15px;
+    transition: all 1s ease;
+}
+
+.little{
+    height: 300px;
+}
+
+h5{
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+}
+
+h1{
+    margin: 0;
+    padding: 0;
+
+}
+
+.song-name-music{
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.song-name-music-sub{
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.top-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--greyColor);
+    padding-bottom: 10px;
+}
+
+.song-info-top{
+    text-align: center;
+}
+
+.top-bar span{
+    background-color: var(--lightGreyColor);
+    padding: 4px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+
+/* Photo */
+
+.photo{
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+    
+}
+
+.photo img{
+    width: 100%;
+    object-fit: cover;
+    
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+
+/* Sub info  */
+
+
+.sub-info{
+    text-align: center;
+}
+
+.sub-info h1{
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+
+/* Progress-bar  */
+
+.progress-bar{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.progress-bar input{
+    width: 100%;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--progressBarColor);
+    border-radius: 50px;
+    height: 6px;
+}
+
+.progress-bar input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    
+    height: 2rem;
+    width: 1rem;    
+ }
+
+
+.progress-bar span{
+    position: absolute;
+    top: 16px;
+
+}
+
+.progress-bar .total-minute{
+    position: absolute;
+    right: 0;
+}
+
+
+
+/* Controllers  */
+
+.controllers{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: -5px;
+}
+
+.controllers span{
+    cursor: pointer;
+}
+
+.play-circle{
+    font-size: 48px;
+}
+
+/* List of Musics */
+
+
+.music-lists{
+    position: absolute;
+    background-color: var(--whiteColor);
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 0px 15px;
+    box-sizing: border-box;
+    box-shadow: 0px -1px 1px var(--boxShadowColor);
+    border-top-right-radius: 8px;
+    border-radius: 8px;
+    height: 300px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+    transition: all 1s ease-in-out;
+}
+
+.music-lists::-webkit-scrollbar{
+    width: 0;
+}
+
+.music-lists .top-part{
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: var(--whiteColor);
+    height: 40px;
+    border-bottom: 1px solid var(--greyColor);
+    margin: 0;
+    padding: 10px 0 0 0;
+}
+
+
+
+.music-lists .top-part, .icon-text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icon-text .text{
+    margin-left: 10px;
+}
+
+ul{
+    margin: 0;
+    padding: 15px 0;
+}
+
+li{
+    list-style: none;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--greyColor);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+li:last-child{
+    border-bottom: none;
+    margin: 0;
+}
+
+li div{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+/* Volume  */
+
+.example{
+    margin-top: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+}
+
+
+.volume-div input{
+    width: 100%;
+    cursor: pointer;
+    appearance: none;
+    background: rgb(199, 150, 3);
+    top: -500px;
+    left: -200px;
+    border-radius: 50px;
+    height: 6px;
+}
+
+.volume-div input::-moz-range-thumb {
+    border: none; /*Removes extra border that FF applies*/
+    border-radius: 0; /*Removes default border-radius that FF applies*/
+    background-color: red;
+    height: 2rem;
+    width: 1rem;
+}
+
+
