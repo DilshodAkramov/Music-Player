@@ -8,16 +8,18 @@ body{
     padding: 0;
     box-sizing: border-box;
     position: relative;
+    transition: all 1s ease-in-out;
     user-select: none;
 }
 
 :root{
     --backColorBody: #d9dce9;
-    --greyColor: #eaeaea;
+    --greyColor: #838282;
     --whiteColor: #fff;
     --lightGreyColor: #f6f5f5;
     --boxShadowColor: rgba(0, 0, 0, 0.2);
-    --progressBarColor: rgb(48, 48, 49);
+    --progressBarColor: rgb(0, 0, 0);
+    --blackColor: #000;
 
 }
 
@@ -30,30 +32,50 @@ body{
     --progressBarColor: rgb(48, 48, 49);
 */
 
-.switch{
+#switch{
     width: 60px;
     height: 30px;
     border-radius: 50px;
     border: 1px solid var(--greyColor);
     background-color: var(--greyColor);
     position: absolute;
-    top: 20px;
-    left: 20%;
+    top: 5%;
+    right: 5%;
     box-shadow: var(--boxShadowColor) 0px 5px 15px;
+    cursor: pointer;
 }
 
-.switch::before{
-    content: '';
+.switched-on{
     position: absolute;
     width: 23px;
     height: 23px;
     border-radius: 50px;
     background-color: var(--whiteColor);
-    top: 50%;
+    top: 15%;
     left: 3px;
-    transform: translateY(-50%);
+    transform: translateX(0);
     cursor: pointer;
+    transition: all 1s ease ;
 }
+
+
+.toggle1{
+    transform: translateX(30px);
+}
+
+
+
+.darkmode{
+    --backColorBody: #212429;
+    --greyColor: #fff;
+    --whiteColor: #1e2126;
+    --lightGreyColor: #f6f5f5;
+    --boxShadowColor: rgba(251, 249, 249, 0.2);
+    --progressBarColor: rgb(255, 255, 255);
+    --blackColor: #fff;
+}
+
+
 
 .container{
     position: relative;
@@ -62,7 +84,7 @@ body{
     background-color: var(--whiteColor);
     border-radius: 8px;
     box-shadow: var(--boxShadowColor) 0px 5px 15px;
-    transition: all 1s ease;
+    transition: all 1s ease-in-out;
 }
 
 .little{
@@ -73,11 +95,13 @@ h5{
     margin: 0;
     padding: 0;
     font-weight: 400;
+    color: var(--blackColor);
 }
 
 h1{
     margin: 0;
     padding: 0;
+    color: var(--blackColor);
 
 }
 
@@ -111,6 +135,116 @@ h1{
     text-align: center;
 }
 
+.expand-more1{
+    position: relative;
+}
+
+.expand-actions{
+    background-color: var(--whiteColor);
+    padding: 15px 25px;
+    box-shadow: var(--boxShadowColor) 0px 5px 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    transition: all 1s ease;
+    top: 25px;
+    left: 25px;
+    display: none;
+}
+
+.expand-actions .add{
+    padding: 7px 15px;
+    margin: 0;
+    background-color: var(--lightGreyColor);
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.expand-more1:hover .expand-actions{
+    display: block;
+}
+
+
+.adding-music-window{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    z-index: 10;
+    background-color: var(--whiteColor);
+    padding: 25px;
+    width: 320px;
+    border-radius: 10px;
+    box-shadow: var(--boxShadowColor) 0px 5px 15px;
+    transition: all 1s ease;
+    display: none;
+}
+
+.adding-music-window .header-adding-music{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--greyColor);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+
+}
+
+.adding-music-window .header-adding-music h1{
+    font-size: 24px;
+}
+.adding-music-window .header-adding-music span{
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--blackColor);
+    cursor: pointer;
+    
+}
+
+.adding-music-window span{
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--blackColor);
+}
+
+.adding-music-window input{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid var(--greyColor);
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.adding-music-window input:last-child{
+    margin-bottom: 0;
+
+}
+
+
+.adding-music-window .submit-new-music{
+    margin-top: 15px;
+    width: 100%;
+    padding: 15px;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid var(--blackColor);
+    font-size: 16px;
+    cursor: pointer;
+    background-color: var(--lightGreyColor);
+    transition: 0.2s all ease;
+}
+
+.adding-music-window .submit-new-music:hover{
+    background-color: var(--greyColor);
+    color: var(--whiteColor);
+}
+
 
 
 /* Photo */
@@ -119,8 +253,14 @@ h1{
     width: 100%;
     height: 300px;
     margin-top: 20px;
-    
+    /* animation: animate 10s linear infinite; */
 }
+
+.photo-running{
+    animation-play-state: paused;
+
+}
+
 
 .photo img{
     width: 100%;
@@ -129,6 +269,14 @@ h1{
     height: 100%;
     overflow: hidden;
     border-radius: 50%;
+}
+
+.malimi-tillo{
+    position: absolute;
+    top: 100px;
+    left: 500px;
+    width: 30px;
+    height: 50px;
 }
 
 
@@ -177,12 +325,14 @@ h1{
 .progress-bar span{
     position: absolute;
     top: 16px;
-
+    color: var(--blackColor);
+    
 }
 
 .progress-bar .total-minute{
     position: absolute;
     right: 0;
+    color: var(--blackColor);
 }
 
 
@@ -190,7 +340,7 @@ h1{
 /* Controllers  */
 
 .controllers{
-    margin-top: 20px;
+    margin-top: 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -199,6 +349,7 @@ h1{
 
 .controllers span{
     cursor: pointer;
+    color: var(--greyColor);
 }
 
 .play-circle{
@@ -237,8 +388,11 @@ h1{
     background-color: var(--whiteColor);
     height: 40px;
     border-bottom: 1px solid var(--greyColor);
-    margin: 0;
+    margin: 0 -1px;
     padding: 10px 0 0 0;
+    
+    transition: all 1s ease-in-out;
+    
 }
 
 
@@ -312,4 +466,42 @@ li div{
     width: 1rem;
 }
 
+/* examples  */
 
+
+.example1{
+    height: 150px;
+}
+
+.photo-example{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    animation: animate 5s infinite linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    border-radius: 50px;
+}
+
+.photo-example::before{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--backColorBody);
+    border-radius: 50px;
+}
+
+@keyframes animate {
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.example-sub-info{
+    display: none;
+}
